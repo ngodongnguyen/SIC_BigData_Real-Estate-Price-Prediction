@@ -7,7 +7,7 @@ from unidecode import unidecode
 # Sổ đỏ | Có sổ | sổ sẵn | chinh chu | phap ly ro rang: 2
 # Sổ hồng | sổ riêng: 3
 # viết tay | vi bằng | hợp đồng : 4
-# đang chờ sổ | công chứng ngay | trong ngày: 5
+# đang chờ sổ: 5
 def legal_document_convert(s) -> int:
     if s == np.nan:
         return 0
@@ -58,7 +58,7 @@ def legal_document_convert(s) -> int:
         return 4
 
     cri = ["dangcho", "dangdoi", "chocap", "choso", "chuanbi", "dangra", "danglam"]
-    # đang chờ sổ | công chứng ngay | trong ngày: 5
+    # đang chờ sổ: 5
     if any(i in s for i in cri):
         return 5
 
