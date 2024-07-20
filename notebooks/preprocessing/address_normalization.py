@@ -124,8 +124,3 @@ def normalize_address(file_path):
     
     result_df = pd.DataFrame(rows, columns=["Region ID", "Area ID", "Ward ID"])
     return result_df
-
-
-# Example usage
-# result_df = normalize_address('input.json', 'dvhc.json')
-# print(result_df)
