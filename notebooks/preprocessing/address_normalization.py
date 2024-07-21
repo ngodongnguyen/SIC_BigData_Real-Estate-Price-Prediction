@@ -123,8 +123,13 @@ def find_ward_id(city_id, district_id, ward_name,data):
                         if(city_id=='79'):
                             tmp=normalize_ward_name(ward_name)
                             ward_name=tmp
+                        if('Hòa'in ward_name):
+                            ward_name=ward_name.replace('Hòa','Hoà')
+                            if ward_name == ward_name_in_data:  # Kiểm tra nếu ward_name có trong ward_name_in_data
+                                return ward.get('level3_id') 
                         if ward_name == ward_name_in_data:  # Kiểm tra nếu ward_name có trong ward_name_in_data
-                            return ward.get('level3_id')  
+                            return ward.get('level3_id') 
+                         
     return None  # Trả về None nếu không tìm thấy 
 def normalize_address(file_path):
     data=read_json_file()
