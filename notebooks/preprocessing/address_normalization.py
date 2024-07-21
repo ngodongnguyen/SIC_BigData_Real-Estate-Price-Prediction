@@ -15,7 +15,12 @@ def read_file(file_path):
 def extract_thanh_pho(address):
     parts = address.split(", ")
     if len(parts) > 1:
-        return parts[-1]
+        thanh_pho = parts[-1]
+        if thanh_pho.endswith("."):
+            thanh_pho = thanh_pho[:-1]
+        if thanh_pho == "Bà Rịa Vũng Tàu":
+            thanh_pho = "Bà Rịa - Vũng Tàu"
+        return thanh_pho
     return None
     
     # Tách quận
@@ -71,6 +76,15 @@ def read_json_file():
         data_dict = json.load(file)
     return data_dict
     # Tìm kiếm ID của thành phố
+def normalize_ward_name(ward_name):
+    # Chuyển đổi phường 1-9 thành phường 01-09, giữ nguyên phường 10 trở lên
+    match = re.search(r'(Phường|Xã)\s(\d+)', ward_name)
+    if match:
+        number = int(match.group(2))
+        if number < 10:
+            normalized_number = f'0{number}'
+            return f'{match.group(1)} {normalized_number}'
+    return ward_name
 def find_city_id(city_name,data):
     if not city_name:  # Kiểm tra nếu city_name là None hoặc chuỗi rỗng
         return None
@@ -80,15 +94,17 @@ def find_city_id(city_name,data):
             return item.get('level1_id')  # Trả về ID của thành phố 
     return None  # Trả về None nếu không tìm thấy
 
-def find_district_id(district_name,data):
-    if not district_name:  # Kiểm tra nếu district_name là None hoặc chuỗi rỗng
+def find_district_id(city_id,district_name,data):
+    if not district_name or not city_id:  # Kiểm tra nếu district_name là None hoặc chuỗi rỗng
         return None
     for item in data.get('data', []):
         # Duyệt qua các quận trong mỗi thành phố
-        for district in item.get('level2s', []):
-            name = district.get('name', '')
-            if name and district_name in name:  # Kiểm tra nếu name không phải là None và district_name có trong name
-                return district.get('level2_id')  # Trả về ID của quận    
+        city_name = item.get('level1_id', '')
+        if city_id in city_name:  # Kiểm tra nếu city_id có trong city_name
+            for district in item.get('level2s', []):
+                name = district.get('name', '')
+                if name and district_name in name:  # Kiểm tra nếu name không phải là None và district_name có trong name
+                    return district.get('level2_id')  # Trả về ID của quận    
     return None  # Trả về None nếu không tìm thấy
 
 def find_ward_id(city_id, district_id, ward_name,data):
@@ -104,18 +120,21 @@ def find_ward_id(city_id, district_id, ward_name,data):
                 if district_id in district_name:  # Kiểm tra nếu district_id có trong district_name
                     for ward in district.get('level3s', []):
                         ward_name_in_data = ward.get('name', '')
-                        if ward_name in ward_name_in_data:  # Kiểm tra nếu ward_name có trong ward_name_in_data
+                        if(city_id=='79'):
+                            tmp=normalize_ward_name(ward_name)
+                            ward_name=tmp
+                        if ward_name == ward_name_in_data:  # Kiểm tra nếu ward_name có trong ward_name_in_data
                             return ward.get('level3_id')  
     return None  # Trả về None nếu không tìm thấy 
 def normalize_address(file_path):
     data=read_json_file()
     rows = []
     df=split_address(file_path)
+    count=0
     for index, row in df.iterrows():
         city_id = find_city_id(row['Region'],data)
-        district_id = find_district_id(row['Area'],data)
+        district_id = find_district_id(city_id,row['Area'],data)
         ward_id = find_ward_id(city_id, district_id, row['Ward'],data)
-        
         rows.append({
             "Region ID": city_id,
             "Area ID": district_id,
