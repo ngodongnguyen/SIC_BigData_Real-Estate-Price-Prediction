@@ -3,7 +3,7 @@ import pandas as pd
 from unidecode import unidecode
 
 
-def legal_document_convert(s) -> int:
+def __legalty_convert(s) -> int:
     """
     # Convert property legal document to integer
     Không sổ : 0
@@ -103,9 +103,9 @@ def legal_document_convert(s) -> int:
     return 0
 
 
-def furnishings_convert(s) -> int:
+def __furnishment_convert(s) -> int:
     """
-    # Convert furnishing status to integer
+    # Convert furnishment to integer
     Không: 0
     Cao cấp: 1
     Đầy đủ | hoàn thiện: 2
@@ -187,7 +187,7 @@ def furnishings_convert(s) -> int:
     return 0
 
 
-def direction_convert(s) -> int:
+def __direction_convert(s) -> int:
     """
     # Convert direction to integer
     Đông: 1
@@ -242,24 +242,24 @@ def legal_document_deconvert(num) -> str:
         return "Handwritten document"
 
 
-def furnishings_deconvert(num) -> str:
+def furnishment_deconvert(num) -> str:
     """
-    # Deconvert furnishing status to string
-    0: No furnishings
-    1: High-end furnishings
-    2: Adequate furnishings
-    3: Decent furnishings
+    # Deconvert furnishment to string
+    0: Unfurnished
+    1: Expensively furnished
+    2: Well furnished
+    3: Simply furnished
     """
     if pd.isna(num):
         return np.nan
     if num == 0:
-        return "No furnishings"
+        return "Unfurnished"
     if num == 1:
-        return "High-end furnishings"
+        return "Expensively furnished"
     if num == 2:
-        return "Adequate furnishings"
+        return "Fully furnished"
     if num == 3:
-        return "Decent furnishings"
+        return "Simply furnished"
 
 
 def direction_deconvert(num) -> str:
@@ -292,3 +292,15 @@ def direction_deconvert(num) -> str:
         return "North - West"
     if num == 8:
         return "South - West"
+
+
+def legalty_convert_all(df: pd.DataFrame):
+    df["PhapLy"] = df["PhapLy"].apply(__legalty_convert).astype(pd.Int8Dtype())
+
+
+def furnishment_convert_all(df: pd.DataFrame):
+    df["NoiThat"] = df["NoiThat"].apply(__furnishment_convert).astype(pd.Int8Dtype())
+
+
+def direction_convert_all(df: pd.DataFrame, col_name):
+    df[col_name] = df[col_name].apply(__direction_convert).astype(pd.Int8Dtype())
