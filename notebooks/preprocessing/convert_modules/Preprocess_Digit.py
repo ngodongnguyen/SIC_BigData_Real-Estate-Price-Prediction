@@ -1,14 +1,6 @@
 import json
 import pandas as pd
 
-# Đọc File
-def Read_file(Path):
-    with open(Path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-        df1 = pd.json_normalize(data)
-        df1.drop_duplicates(inplace=True)
-    return df1
-
 # Xử lý diện tích
 def Area(df):
     df['DienTich'] = df['DienTich'].str.replace(' m²', '').str.replace('.', '').str.replace(',', '.').str.strip()
@@ -70,8 +62,7 @@ def Floor(df):
     return df
 
 # Main Preprocess_Digit
-def PreprocessDg(Path):
-    df = Read_file(Path)
+def PreprocessDg(df: pd.DataFrame):
     df = Area(df)
     df = Price(df)
     df = Facade(df)
