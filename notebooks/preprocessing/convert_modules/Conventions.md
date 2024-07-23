@@ -21,3 +21,16 @@
 - Đông - Nam: 6
 - Tây - Bắc: 7
 - Tây - Nam: 8
+
+## Administrative units
+- region: Tỉnh, thành phố (level 1)
+- area: Quận, Huyện, thị xã(level 2)
+- ward: Phường, xã, thị trấn 
+
+## Price: vnd
+## Area: m²
+## Location
+- Region (Tỉnh, thành phố ~ level 1)
+- Area (Quận, Huyện, thị xã ~ level 2)
+- Ward (Phường, xã, thị trấn ~ level 3)
+* See more in data/donvihanhchinhvn
