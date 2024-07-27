@@ -55,29 +55,29 @@ def __region_to_id_convert(raw_name, dvhc_json):
     """
     new_name = __get_place_name(raw_name)
     if pd.isna(raw_name):
-        return pd.NA, pd.NA
+        return pd.NA
 
-    for idx, level_1 in enumerate(dvhc_json):
-        if new_name == level_1["name"]:
-            return idx, level_1["level1_id"]
-    return pd.NA, pd.NA
+    for l1_key, l1_val in dvhc_json.items():
+        if new_name == l1_val["alias"]:
+            return l1_key
+    return pd.NA
 
 
-def __area_to_id_convert(region_idx, raw_name, dvhc_json):
+def __area_to_id_convert(region_id, raw_name, dvhc_json):
     """
     Convert area (Quận, Huyện, thị xã ~ level 2) to id (string)
     """
     new_name = __get_place_name(raw_name)
     if pd.isna(raw_name):
-        return pd.NA, pd.NA
+        return pd.NA
 
-    for idx, level_2 in enumerate(dvhc_json[region_idx]["level2s"]):
-        if new_name == level_2["name"]:
-            return idx, level_2["level2_id"]
-    return pd.NA, pd.NA
+    for l2_key, l2_val in dvhc_json[region_id]["level2s"].items():
+        if new_name == l2_val["alias"]:
+            return l2_key
+    return pd.NA
 
 
-def __ward_to_id_convert(region_idx, area_idx, raw_name, dvhc_json):
+def __ward_to_id_convert(region_id, area_id, raw_name, dvhc_json):
     """
     Convert ward (Phường, xã, thị trấn ~ level 3) to id (string)
     """
@@ -85,10 +85,9 @@ def __ward_to_id_convert(region_idx, area_idx, raw_name, dvhc_json):
     if pd.isna(new_name):
         return pd.NA
 
-    for level_3 in dvhc_json[region_idx]["level2s"][area_idx]["level3s"]:
-        if new_name == level_3["name"]:
-            return level_3["level3_id"]
-
+    for l3_key, l3_val in dvhc_json[region_id]["level2s"][area_id]["level3s"].items():
+        if new_name == l3_val["alias"]:
+            return l3_key
     return pd.NA
 
 
@@ -96,15 +95,15 @@ def address_convert_all(df: pd.DataFrame):
     """Convert Region, area, ward to id"""
 
     def convert_row(row, dvhc_json):
-        region_idx, region_id = __region_to_id_convert(row["City"], dvhc_json)
-        if pd.isna(region_idx):
+        region_id = __region_to_id_convert(row["City"], dvhc_json)
+        if pd.isna(region_id):
             return pd.Series({"City": pd.NA, "District": pd.NA, "Ward": pd.NA})
 
-        area_idx, area_id = __area_to_id_convert(region_idx, row["District"], dvhc_json)
-        if pd.isna(area_idx):
+        area_id = __area_to_id_convert(region_id, row["District"], dvhc_json)
+        if pd.isna(area_id):
             return pd.Series({"City": region_id, "District": pd.NA, "Ward": pd.NA})
 
-        ward_id = __ward_to_id_convert(region_idx, area_idx, row["DiaChi"], dvhc_json)
+        ward_id = __ward_to_id_convert(region_id, area_id, row["DiaChi"], dvhc_json)
         return pd.Series({"City": region_id, "District": area_id, "Ward": ward_id})
 
     def convert_row_hybrid(row):
@@ -112,12 +111,42 @@ def address_convert_all(df: pd.DataFrame):
         if res.isna().any():
             # Retry with another version
             res = convert_row(row, __dvhc_json_2024)
-        return res.astype(pd.Int32Dtype())
+        return res
 
     if "Ward" not in df:
         df["Ward"] = pd.NA
 
     df[["City", "District", "Ward"]] = df.apply(convert_row_hybrid, axis=1)
+
+
+def region_deconvert(id):
+    id = str(id)
+    if id in __dvhc_json_2020.keys():
+        return __dvhc_json_2020[id]["name"]
+    if id in __dvhc_json_2024.keys():
+        return __dvhc_json_2024[id]["name"]
+    return pd.NA
+
+
+def area_deconvert(reg_id, are_id):
+    reg_id = str(reg_id)
+    are_id = str(are_id)
+    if are_id in __dvhc_json_2020[reg_id]["level2s"].keys():
+        return __dvhc_json_2020[reg_id]["level2s"][are_id]["name"]
+    if are_id in __dvhc_json_2024[reg_id]["level2s"].keys():
+        return __dvhc_json_2024[reg_id]["level2s"][are_id]["name"]
+    return pd.NA
+
+
+def ward_deconvert(reg_id, are_id, ward_id):
+    reg_id = str(reg_id)
+    are_id = str(are_id)
+    ward_id = str(ward_id)
+    if ward_id in __dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].keys():
+        return __dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"][ward_id]["name"]
+    if ward_id in __dvhc_json_2024[reg_id]["level2s"][are_id]["level3s"].keys():
+        return __dvhc_json_2024[reg_id]["level2s"][are_id]["level3s"][ward_id]["name"]
+    return pd.NA
 
 
 #################################################### Load dvhc ####################################################
@@ -130,16 +159,7 @@ json_path = (
 
 def load_dvhc_file(file_name):
     with open(json_path + file_name, "r", encoding="utf8") as dvhc_file:
-        dvhc_json = json.load(dvhc_file)["data"]
-        for level_1 in dvhc_json:
-            # Rename all level 1s
-            level_1["name"] = __get_place_name(level_1["name"])
-            # Rename all level 2s
-            for level_2 in level_1["level2s"]:
-                level_2["name"] = __get_place_name(level_2["name"])
-                # Rename all level 3s
-                for level_3 in level_2["level3s"]:
-                    level_3["name"] = __get_place_name(level_3["name"])
+        dvhc_json = json.load(dvhc_file)
     return dvhc_json
 
 

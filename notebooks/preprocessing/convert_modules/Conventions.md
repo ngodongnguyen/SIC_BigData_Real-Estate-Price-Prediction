@@ -1,12 +1,12 @@
 # Conventions
-## Legal document
+## Legalty
 - Không sổ : 0
 - Đã có sổ: 1
 - Đang chờ sổ: 2
 - Sổ chung | công chứng vi bằng: 3
 - viết tay: 4
 
-## Furnishings
+## Furnishment
 - Không nội thất: 0
 - Cao cấp: 1
 - Đầy đủ | hoàn thiện: 2
