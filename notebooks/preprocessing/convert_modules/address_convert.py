@@ -116,7 +116,9 @@ def address_convert_all(df: pd.DataFrame):
     if "Ward" not in df:
         df["Ward"] = pd.NA
 
-    df[["City", "District", "Ward"]] = df.apply(convert_row_hybrid, axis=1)
+    df[["City", "District", "Ward"]] = df.apply(convert_row_hybrid, axis=1).astype(
+        pd.Int32Dtype()
+    )
 
 
 def region_deconvert(id):
