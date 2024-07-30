@@ -1,0 +1,57 @@
+/* This creates a skinny side bar fixed to the left of the page */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--closed-sidebar-width);
+  padding: 10rem 1rem;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 1050;
+  transition: width 0.1s ease-in-out;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+/* when the user hovers on the sidebar, expand it */
+.sidebar:hover {
+  width: var(--opened-sidebar-width);
+}
+
+/* make sure the contents of the navlink don't wrap when navbar collapses */
+.sidebar .nav-link {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 6rem;
+}
+
+.sidebar .nav-link i {
+  margin-right: 5px;
+  margin-left: -2px;
+}
+
+/* hide the navlink labels by default */
+.sidebar .nav-link span {
+  visibility: hidden;
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+}
+
+/* when the sidebar is hovered, reveal the labels */
+.sidebar:hover .nav-link span {
+  visibility: visible;
+  opacity: 1;
+  color: black;
+}
+.sidebar:hover .nav-link.active span {
+  visibility: visible;
+  opacity: 1;
+  color: white;
+}
+
+.sidebar:hover + .main {
+  margin-left: var(--opened-sidebar-width);
+  transition: 0.3s;
+}

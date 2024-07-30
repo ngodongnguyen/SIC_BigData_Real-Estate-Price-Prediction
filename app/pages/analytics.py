@@ -1,14 +1,15 @@
+import dash
+from dash import html, dash_table, dcc, callback, Output, Input, State
+import pandas as pd
+
+dash.register_page(__name__)
+
 # Add path to import root pakages
 import os
 import sys
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, "/".join(i for i in current_dir.split("\\")[:-1]))
-
-# Import packages
-from dash import Dash, html, dash_table, dcc, callback, Output, Input, State
-import pandas as pd
-
+sys.path.insert(0, "/".join(i for i in current_dir.split("\\")[:-2]))
 
 from custom_modules.preprocessing.convert_modules import address_convert as ac
 
@@ -26,33 +27,30 @@ df_init["District"] = df_init.apply(
 )
 df_init["City"] = df_init["City"].apply(ac.region_deconvert, 1)
 
-
-# Initialize the app
-app = Dash(__name__, title="Real Estate Price Prediction")
-
-app.layout = [
-    html.H1("SAMSUNG INNOVATION CAMPUS CAPSTONE PROJECT"),
-    html.Hr(),
-    html.Div(
-        [
-            html.Div(
-                [
-                    dcc.Dropdown(
-                        ac.get_all_regions(),
-                        placeholder="Select the region",
-                        id="region-dropdown",
-                    ),
-                    dcc.Dropdown(placeholder="Select the area", id="area-dropdown"),
-                    dcc.Dropdown(placeholder="Select the ward", id="ward-dropdown"),
-                ],
-                className="location-dropdowns",
-            ),
-            html.Button("Find", "find-btn", 0),
-        ],
-        className="location-menu",
-    ),
-    dash_table.DataTable(page_size=10, id="data-table"),
-]
+layout = html.Div(
+    [
+        html.Div(
+            [
+                html.Div(
+                    [
+                        dcc.Dropdown(
+                            ac.get_all_regions(),
+                            placeholder="Select the region",
+                            id="region-dropdown",
+                        ),
+                        dcc.Dropdown(placeholder="Select the area", id="area-dropdown"),
+                        dcc.Dropdown(placeholder="Select the ward", id="ward-dropdown"),
+                    ],
+                    className="location-dropdowns",
+                ),
+                html.Button("Find", "find-btn", 0),
+            ],
+            className="location-menu",
+        ),
+        dash_table.DataTable(page_size=10, id="data-table"),
+    ],
+    className="container",
+)
 
 
 ############ DROPDOWN UPDATE ############
@@ -103,8 +101,3 @@ def update_table(_, reg_val, are_val, war_val):
         & (df_init["District"] == are_val)
         & (df_init["Ward"] == war_val)
     ].to_dict("records")
-
-
-# Run the app
-if __name__ == "__main__":
-    app.run(debug=True)
