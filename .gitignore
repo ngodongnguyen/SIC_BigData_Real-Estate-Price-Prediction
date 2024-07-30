@@ -1,5 +1,9 @@
 data/*
 data/test/*
+**/__pycache__
+**/downloaded_files
 
 !data/test
 !data/test/dataset_chungcu.csv
+!donvihanhchinhvn
+!data/batdongsan
