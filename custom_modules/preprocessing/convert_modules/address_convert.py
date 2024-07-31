@@ -165,12 +165,10 @@ def get_all_areas(reg_name):
     reg_id = __region_to_id_convert(reg_name, _dvhc_json_2020)
     if pd.isna(reg_id):
         return pd.NA
-    return sorted(
-        [
-            (val["type"] + " " + val["name"])
-            for _, val in _dvhc_json_2020[reg_id]["level2s"].items()
-        ]
-    )
+    return [
+        {"label": (val["type"] + " " + val["name"]), "value": val["name"]}
+        for _, val in _dvhc_json_2020[reg_id]["level2s"].items()
+    ]
 
 
 def get_all_wards(reg_name, are_name):
@@ -178,12 +176,10 @@ def get_all_wards(reg_name, are_name):
     are_id = __area_to_id_convert(reg_id, are_name, _dvhc_json_2020)
     if pd.isna([reg_id, are_id]).any():
         return pd.NA
-    return sorted(
-        [
-            (val["type"] + " " + val["name"])
-            for _, val in _dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].items()
-        ]
-    )
+    return [
+        {"label": (val["type"] + " " + val["name"]), "value": val["name"]}
+        for _, val in _dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].items()
+    ]
 
 
 #################################################### Load dvhc ####################################################

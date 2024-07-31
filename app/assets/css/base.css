@@ -1,6 +1,6 @@
 :root {
-  --closed-sidebar-width: 5rem;
-  --opened-sidebar-width: 20rem;
+  --collapsed-sidebar-width: 5rem;
+  --expanded-sidebar-width: 20rem;
 }
 
 html {
@@ -17,8 +17,6 @@ html {
   text-align: center;
   font-size: 3.5rem;
   color: midnightblue;
-  position: -webkit-sticky;
-  position: sticky;
   top: 0;
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
@@ -26,6 +24,14 @@ html {
   padding: 10px;
 }
 
-.main {
-  margin-left: var(--closed-sidebar-width);
+#main {
+  transition: 0.3s;
+}
+
+#main.collapsed-sidebar {
+  margin-left: var(--collapsed-sidebar-width);
+}
+
+#main.expanded-sidebar {
+  margin-left: var(--expanded-sidebar-width);
 }

@@ -91,7 +91,7 @@ def update_table(_, reg_val, are_val, war_val):
         return df_init.to_dict("records")
     if are_val is None:
         return df_init[df_init["City"] == reg_val].to_dict("records")
-    if not war_val:
+    if war_val is None:
         return df_init[
             (df_init["City"] == reg_val) & (df_init["District"] == are_val)
         ].to_dict("records")
