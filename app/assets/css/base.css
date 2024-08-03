@@ -15,7 +15,7 @@ html {
 
 #header {
   text-align: center;
-  font-size: 3.5rem;
+  /* font-size: 3.5rem; */
   color: midnightblue;
   top: 0;
   background-color: rgba(255, 255, 255, 0.95);
@@ -34,4 +34,8 @@ html {
 
 #main.expanded-sidebar {
   margin-left: var(--expanded-sidebar-width);
+}
+
+.container {
+  padding: 10px;
 }

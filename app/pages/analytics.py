@@ -1,103 +1,45 @@
 import dash
 from dash import html, dash_table, dcc, callback, Output, Input, State
-import pandas as pd
 
-dash.register_page(__name__)
-
-# Add path to import root pakages
-import os
-import sys
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, "/".join(i for i in current_dir.split("\\")[:-2]))
-
-from custom_modules.preprocessing.convert_modules import address_convert as ac
-
-# Read data
-df_init = pd.read_csv(
-    "data/batdongsan/numerized/NhaO_numerized-dataset.csv", index_col=[0]
+from pages.analytics_pages import (
+    analytics_apartment,
+    analytics_house,
+    analytics_land,
 )
-df_init.drop(columns=["Lat", "Long"], inplace=True)
 
-df_init["Ward"] = df_init.apply(
-    lambda row: ac.ward_deconvert(row["City"], row["District"], row["Ward"]), axis=1
+dash.register_page(
+    __name__,
+    path="/analytics-dashboard",
+    name="Analytics Dashboard",
+    title="Analytics Dashboard",
 )
-df_init["District"] = df_init.apply(
-    lambda row: ac.area_deconvert(row["City"], row["District"]), axis=1
-)
-df_init["City"] = df_init["City"].apply(ac.region_deconvert, 1)
 
 layout = html.Div(
     [
-        html.Div(
+        html.H1("Analytics page"),
+        dcc.Tabs(
             [
-                html.Div(
-                    [
-                        dcc.Dropdown(
-                            ac.get_all_regions(),
-                            placeholder="Select the region",
-                            id="region-dropdown",
-                        ),
-                        dcc.Dropdown(placeholder="Select the area", id="area-dropdown"),
-                        dcc.Dropdown(placeholder="Select the ward", id="ward-dropdown"),
-                    ],
-                    className="location-dropdowns",
-                ),
-                html.Button("Find", "find-btn", 0),
+                dcc.Tab(label="Land", value="land-tab"),
+                dcc.Tab(label="House", value="house-tab"),
+                dcc.Tab(label="Apartment", value="apartment-tab"),
             ],
-            className="location-menu",
+            id="analytics-tabs",
         ),
-        dash_table.DataTable(page_size=10, id="data-table"),
+        html.Div(["This is tab content"], id="analytics-content"),
     ],
     className="container",
 )
 
 
-############ DROPDOWN UPDATE ############
 @callback(
-    Output("area-dropdown", "options"),
-    Input("region-dropdown", "value"),
+    Output("analytics-content", "children"),
+    Input("analytics-tabs", "value"),
     prevent_initial_call=True,
 )
-def update_area_dropdown(reg_val):
-    if not reg_val:
-        return []
-    return ac.get_all_areas(reg_val)
-
-
-@callback(
-    Output("ward-dropdown", "options"),
-    Input("region-dropdown", "value"),
-    Input("area-dropdown", "value"),
-    prevent_initial_call=True,
-)
-def update_ward_dropdown(reg_val, are_val):
-    if not reg_val or not are_val:
-        return []
-    return ac.get_all_wards(reg_val, are_val)
-
-
-############ TABLE UPDATE ############
-@callback(
-    Output("data-table", "data"),
-    Input("find-btn", "n_clicks"),
-    State("region-dropdown", "value"),
-    State("area-dropdown", "value"),
-    State("ward-dropdown", "value"),
-    prevent_initial_call=True,
-)
-def update_table(_, reg_val, are_val, war_val):
-    if reg_val is None:
-        return df_init.to_dict("records")
-    if are_val is None:
-        return df_init[df_init["City"] == reg_val].to_dict("records")
-    if war_val is None:
-        return df_init[
-            (df_init["City"] == reg_val) & (df_init["District"] == are_val)
-        ].to_dict("records")
-
-    return df_init[
-        (df_init["City"] == reg_val)
-        & (df_init["District"] == are_val)
-        & (df_init["Ward"] == war_val)
-    ].to_dict("records")
+def render_analytics_content(tab_value):
+    if tab_value == "land-tab":
+        return "This is land"
+    if tab_value == "house-tab":
+        return analytics_house.house_dashboard_layout
+    if tab_value == "apartment-tab":
+        return "This is apart"

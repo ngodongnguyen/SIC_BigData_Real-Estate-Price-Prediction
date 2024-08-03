@@ -41,8 +41,13 @@
 }
 
 .sidebar .nav-link i {
-  margin-right: 3rem;
   margin-left: -2px;
+}
+.sidebar.collapsed .nav-link i {
+  margin-right: 2.5rem;
+}
+.sidebar.expanded .nav-link i {
+  margin-right: 1rem;
 }
 
 .sidebar .nav-link span {
@@ -85,6 +90,7 @@
   border: none;
   color: #0d6efd;
   border-radius: 5px;
+  font-size: 2rem;
 }
 
 .sidebar__mode-btn:hover {

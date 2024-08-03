@@ -4,6 +4,8 @@ from dash import Dash, html, dcc, clientside_callback, Input, Output, State
 import dash_bootstrap_components as dbc
 import dash_daq as daq
 
+from components.sidebar import sidebar
+
 # Initialize the app
 app = Dash(
     __name__,
@@ -12,64 +14,10 @@ app = Dash(
     use_pages=True,
 )
 
-sidebar = html.Div(
-    [
-        dbc.Nav(
-            [
-                dbc.NavLink(
-                    [html.I(className="bi bi-house"), html.Span("Home")],
-                    href="/",
-                    active="exact",
-                ),
-                dbc.NavLink(
-                    [
-                        html.I(className="bi bi-clipboard-data"),
-                        html.Span("Analysis"),
-                    ],
-                    href="/analytics",
-                    active="exact",
-                ),
-                dbc.NavLink(
-                    [
-                        html.I(className="bi bi-map"),
-                        html.Span("Map"),
-                    ],
-                    href="/map",
-                    active="exact",
-                ),
-                dbc.NavLink(
-                    [
-                        html.I(className="bi bi-cash-coin"),
-                        html.Span("Prediction"),
-                    ],
-                    href="/prediction",
-                    active="exact",
-                ),
-                dbc.NavLink(
-                    [
-                        html.I(className="bi bi-info-square"),
-                        html.Span("About"),
-                    ],
-                    href="/about",
-                    active="exact",
-                ),
-            ],
-            vertical=True,
-            pills=True,
-        ),
-        html.Button(
-            html.I(id="sidebar-toggle-icon", className="bi bi-arrow-bar-right"),
-            "sidebar-toggle",
-            className="sidebar__mode-btn",
-        ),
-    ],
-    "sidebar",
-    className="sidebar collapsed",
-)
 
 app.layout = html.Div(
     [
-        sidebar,
+        sidebar(),
         html.Div(
             [
                 html.H1(
@@ -79,14 +27,15 @@ app.layout = html.Div(
                 ),
                 dash.page_container,
             ],
-            "main",
+            id="main",
             className="collapsed-sidebar",
         ),
-        dcc.Store(
-            id="sidebar-toggle-state", data={"expanded": False}
-        ),  # Store for sidebar state
+        # Store for sidebar state
+        dcc.Store(id="sidebar-toggle-state", data={"expanded": False}),
     ]
 )
+
+
 # Clientside callback to handle sidebar toggle
 app.clientside_callback(
     """
@@ -120,4 +69,4 @@ app.clientside_callback(
 
 # Run the app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
