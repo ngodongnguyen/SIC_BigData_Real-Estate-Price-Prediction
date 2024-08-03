@@ -107,10 +107,10 @@ def address_convert_all(df: pd.DataFrame):
         return pd.Series({"City": region_id, "District": area_id, "Ward": ward_id})
 
     def convert_row_hybrid(row):
-        res = convert_row(row, __dvhc_json_2020)
+        res = convert_row(row, _dvhc_json_2020)
         if res.isna().any():
             # Retry with another version
-            res = convert_row(row, __dvhc_json_2024)
+            res = convert_row(row, _dvhc_json_2024)
         return res
 
     if "Ward" not in df:
@@ -122,33 +122,64 @@ def address_convert_all(df: pd.DataFrame):
 
 
 def region_deconvert(id):
-    id = str(id)
-    if id in __dvhc_json_2020.keys():
-        return __dvhc_json_2020[id]["name"]
-    if id in __dvhc_json_2024.keys():
-        return __dvhc_json_2024[id]["name"]
+    if pd.isna(id):
+        return pd.NA
+    id = str(int(float(id)))
+    if id in _dvhc_json_2020.keys():
+        return _dvhc_json_2020[id]["name"]
+    if id in _dvhc_json_2024.keys():
+        return _dvhc_json_2024[id]["name"]
     return pd.NA
 
 
 def area_deconvert(reg_id, are_id):
-    reg_id = str(reg_id)
-    are_id = str(are_id)
-    if are_id in __dvhc_json_2020[reg_id]["level2s"].keys():
-        return __dvhc_json_2020[reg_id]["level2s"][are_id]["name"]
-    if are_id in __dvhc_json_2024[reg_id]["level2s"].keys():
-        return __dvhc_json_2024[reg_id]["level2s"][are_id]["name"]
+    if pd.isna([reg_id, are_id]).any():
+        return pd.NA
+    reg_id = str(int(float(reg_id)))
+    are_id = str(int(float(are_id)))
+    if are_id in _dvhc_json_2020[reg_id]["level2s"].keys():
+        return _dvhc_json_2020[reg_id]["level2s"][are_id]["name"]
+    if are_id in _dvhc_json_2024[reg_id]["level2s"].keys():
+        return _dvhc_json_2024[reg_id]["level2s"][are_id]["name"]
     return pd.NA
 
 
 def ward_deconvert(reg_id, are_id, ward_id):
-    reg_id = str(reg_id)
-    are_id = str(are_id)
-    ward_id = str(ward_id)
-    if ward_id in __dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].keys():
-        return __dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"][ward_id]["name"]
-    if ward_id in __dvhc_json_2024[reg_id]["level2s"][are_id]["level3s"].keys():
-        return __dvhc_json_2024[reg_id]["level2s"][are_id]["level3s"][ward_id]["name"]
+    if pd.isna([reg_id, are_id, ward_id]).any():
+        return pd.NA
+    reg_id = str(int(float(reg_id)))
+    are_id = str(int(float(are_id)))
+    ward_id = str(int(float(ward_id)))
+    if ward_id in _dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].keys():
+        return _dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"][ward_id]["name"]
+    if ward_id in _dvhc_json_2024[reg_id]["level2s"][are_id]["level3s"].keys():
+        return _dvhc_json_2024[reg_id]["level2s"][are_id]["level3s"][ward_id]["name"]
     return pd.NA
+
+
+def get_all_regions():
+    return sorted([val["name"] for _, val in _dvhc_json_2020.items()])
+
+
+def get_all_areas(reg_name):
+    reg_id = __region_to_id_convert(reg_name, _dvhc_json_2020)
+    if pd.isna(reg_id):
+        return pd.NA
+    return [
+        {"label": (val["type"] + " " + val["name"]), "value": val["name"]}
+        for _, val in _dvhc_json_2020[reg_id]["level2s"].items()
+    ]
+
+
+def get_all_wards(reg_name, are_name):
+    reg_id = __region_to_id_convert(reg_name, _dvhc_json_2020)
+    are_id = __area_to_id_convert(reg_id, are_name, _dvhc_json_2020)
+    if pd.isna([reg_id, are_id]).any():
+        return pd.NA
+    return [
+        {"label": (val["type"] + " " + val["name"]), "value": val["name"]}
+        for _, val in _dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].items()
+    ]
 
 
 #################################################### Load dvhc ####################################################
@@ -159,11 +190,11 @@ json_path = (
 )
 
 
-def load_dvhc_file(file_name):
+def load_dvhc_file(file_name) -> dict:
     with open(json_path + file_name, "r", encoding="utf8") as dvhc_file:
         dvhc_json = json.load(dvhc_file)
     return dvhc_json
 
 
-__dvhc_json_2024 = load_dvhc_file("dvhcvn_2024.json")
-__dvhc_json_2020 = load_dvhc_file("dvhcvn_2020.json")
+_dvhc_json_2024 = load_dvhc_file("dvhcvn_2024.json")
+_dvhc_json_2020 = load_dvhc_file("dvhcvn_2020.json")
