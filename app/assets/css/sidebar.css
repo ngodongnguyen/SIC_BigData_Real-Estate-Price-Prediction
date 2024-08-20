@@ -41,7 +41,7 @@
 }
 
 .sidebar .nav-link i {
-  margin-left: -2px;
+  margin-left: -4px;
 }
 .sidebar.collapsed .nav-link i {
   margin-right: 2.5rem;
@@ -96,6 +96,6 @@
 .sidebar__mode-btn:hover {
   background-color: #efefef;
 }
-#sidebar-toggle-icon.rotate::before {
+#sidebar-toggle-icon.rotate {
   transform: rotate(180deg);
 }

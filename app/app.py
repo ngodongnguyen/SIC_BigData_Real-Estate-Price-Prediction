@@ -10,7 +10,10 @@ from components.sidebar import sidebar
 app = Dash(
     __name__,
     title="Real Estate Price Prediction",
-    external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP],
+    external_stylesheets=[
+        dbc.themes.BOOTSTRAP,
+        dbc.icons.FONT_AWESOME,
+    ],
     use_pages=True,
 )
 
