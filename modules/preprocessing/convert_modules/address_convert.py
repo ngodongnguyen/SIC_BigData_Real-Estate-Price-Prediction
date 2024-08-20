@@ -158,27 +158,26 @@ def ward_deconvert(reg_id, are_id, ward_id):
 
 
 def get_all_regions():
-    return sorted([val["name"] for _, val in _dvhc_json_2020.items()])
-
-
-def get_all_areas(reg_name):
-    reg_id = __region_to_id_convert(reg_name, _dvhc_json_2020)
-    if pd.isna(reg_id):
-        return pd.NA
     return [
-        {"label": (val["type"] + " " + val["name"]), "value": val["name"]}
-        for _, val in _dvhc_json_2020[reg_id]["level2s"].items()
+        {"label": val["name"], "value": key} for key, val in _dvhc_json_2020.items()
     ]
 
 
-def get_all_wards(reg_name, are_name):
-    reg_id = __region_to_id_convert(reg_name, _dvhc_json_2020)
-    are_id = __area_to_id_convert(reg_id, are_name, _dvhc_json_2020)
+def get_all_areas(reg_id):
+    if pd.isna(reg_id):
+        return pd.NA
+    return [
+        {"label": (val["type"] + " " + val["name"]), "value": key}
+        for key, val in _dvhc_json_2020[reg_id]["level2s"].items()
+    ]
+
+
+def get_all_wards(reg_id, are_id):
     if pd.isna([reg_id, are_id]).any():
         return pd.NA
     return [
-        {"label": (val["type"] + " " + val["name"]), "value": val["name"]}
-        for _, val in _dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].items()
+        {"label": (val["type"] + " " + val["name"]), "value": key}
+        for key, val in _dvhc_json_2020[reg_id]["level2s"][are_id]["level3s"].items()
     ]
 
 

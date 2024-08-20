@@ -2,6 +2,8 @@ data/*
 data/test/*
 **/__pycache__
 **/downloaded_files
+models/house_stacking_model.pkl
+
 
 !data/test
 !data/test/dataset_chungcu.csv

@@ -8,13 +8,13 @@ def sidebar():
             dbc.Nav(
                 [
                     dbc.NavLink(
-                        [html.I(className="bi bi-house"), html.Span("Home")],
+                        [html.I(className="fa-solid fa-house"), html.Span("Home")],
                         href="/",
                         active="exact",
                     ),
                     dbc.NavLink(
                         [
-                            html.I(className="bi bi-clipboard-data"),
+                            html.I(className="fa-solid fa-chart-line"),
                             html.Span("Analytics"),
                         ],
                         href="/analytics-dashboard",
@@ -22,7 +22,7 @@ def sidebar():
                     ),
                     dbc.NavLink(
                         [
-                            html.I(className="bi bi-map"),
+                            html.I(className="fa-solid fa-map-location-dot"),
                             html.Span("Map"),
                         ],
                         href="/map",
@@ -30,7 +30,7 @@ def sidebar():
                     ),
                     dbc.NavLink(
                         [
-                            html.I(className="bi bi-cash-coin"),
+                            html.I(className="fa-solid fa-coins"),
                             html.Span("Price Predicting"),
                         ],
                         href="/predicting",
@@ -38,7 +38,7 @@ def sidebar():
                     ),
                     dbc.NavLink(
                         [
-                            html.I(className="bi bi-info-square"),
+                            html.I(className="fa-solid fa-circle-info"),
                             html.Span("About"),
                         ],
                         href="/about",
@@ -49,7 +49,10 @@ def sidebar():
                 pills=True,
             ),
             html.Button(
-                html.I(id="sidebar-toggle-icon", className="bi bi-arrow-bar-right"),
+                html.I(
+                    id="sidebar-toggle-icon",
+                    className="fa-solid fa-arrow-right-from-bracket",
+                ),
                 "sidebar-toggle",
                 className="sidebar__mode-btn",
             ),

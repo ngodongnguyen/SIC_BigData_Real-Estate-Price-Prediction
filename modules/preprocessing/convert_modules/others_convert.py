@@ -306,3 +306,35 @@ def furnishment_convert_all(df: pd.DataFrame):
 
 def direction_convert_all(df: pd.DataFrame, col_name):
     df[col_name] = df[col_name].apply(__direction_convert).astype(pd.Int8Dtype())
+
+
+def get_all_legal_status():
+    return [
+        {"label": "Uncertified", "value": 0},
+        {"label": "Certified", "value": 1},
+        {"label": "Certifying", "value": 2},
+        {"label": "Shared / notarized document", "value": 3},
+        {"label": "Hand-written contract", "value": 4},
+    ]
+
+
+def get_all_furnishment():
+    return [
+        {"label": "Nothing", "value": 0},
+        {"label": "Expensive", "value": 1},
+        {"label": "Full", "value": 2},
+        {"label": "Basic", "value": 3},
+    ]
+
+
+def get_all_directions():
+    return [
+        {"label": "East", "value": 1},
+        {"label": "West", "value": 2},
+        {"label": "South", "value": 3},
+        {"label": "North", "value": 4},
+        {"label": "North - East", "value": 5},
+        {"label": "South - East", "value": 6},
+        {"label": "North - West", "value": 7},
+        {"label": "South - West", "value": 8},
+    ]

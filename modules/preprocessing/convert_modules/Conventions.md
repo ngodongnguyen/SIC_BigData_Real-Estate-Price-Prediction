@@ -1,26 +1,26 @@
 # Conventions
 ## Legalty
-- Không sổ : 0
-- Đã có sổ: 1
-- Đang chờ sổ: 2
-- Sổ chung | công chứng vi bằng: 3
-- viết tay: 4
+- Không sổ (Uncertified): 0
+- Đã có sổ (Certified): 1
+- Đang chờ sổ (Certifying): 2
+- Sổ chung | công chứng vi bằng (Shared / notarized): 3
+- viết tay (Hand-written contract): 4
 
 ## Furnishment
-- Không nội thất: 0
-- Cao cấp: 1
-- Đầy đủ | hoàn thiện: 2
-- Cơ bản: 3
+- Không nội thất (Nothing): 0
+- Cao cấp (Expensive): 1
+- Đầy đủ | hoàn thiện (Full): 2
+- Cơ bản (Basic): 3
 
 ## Direction
-- Đông: 1
-- Tây: 2
-- Nam: 3
-- Bắc: 4
-- Đông - Bắc: 5
-- Đông - Nam: 6
-- Tây - Bắc: 7
-- Tây - Nam: 8
+- Đông (East): 1
+- Tây (West): 2
+- Nam (South): 3
+- Bắc (North): 4
+- Đông - Bắc (North - East): 5
+- Đông - Nam (South - East): 6
+- Tây - Bắc (North - West): 7
+- Tây - Nam (South - West): 8
 
 ## Administrative units
 - region: Tỉnh, thành phố (level 1)
