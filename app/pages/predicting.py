@@ -16,7 +16,6 @@ scaler = joblib.load(open("models/house_scaler.pkl", "rb"))
 
 house_model = joblib.load(open("models/house_stacking_model.pkl", "rb"))
 
-
 layout = html.Div(
     [
         html.Div(
