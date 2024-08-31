@@ -52,11 +52,11 @@
 </div>
   <div style="text-align: center;">
     <strong>Nhà ở</strong><br>
-    <img src="[https://github.com/user-attachments/assets/afd5f2f3-71e0-4780-901a-f4967f569d7e](https://github.com/user-attachments/assets/f850a58d-ec11-4adb-b038-5e9594ab3cba)" alt="Dữ liệu về nhà ở">
+    <img src="(https://github.com/user-attachments/assets/f850a58d-ec11-4adb-b038-5e9594ab3cba)" alt="Dữ liệu về nhà ở">
 </div>
   <div style="text-align: center;">
     <strong>Đất</strong><br>
-    <img src="[https://github.com/user-attachments/assets/afd5f2f3-71e0-4780-901a-f4967f569d7e](https://github.com/user-attachments/assets/6f613e30-02dd-42ba-b476-16e149ba02f7)" alt="Dữ liệu về đất">
+    <img src="(https://github.com/user-attachments/assets/6f613e30-02dd-42ba-b476-16e149ba02f7)" alt="Dữ liệu về đất">
 </div>
 
 
