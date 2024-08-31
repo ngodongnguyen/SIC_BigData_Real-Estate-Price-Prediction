@@ -62,7 +62,9 @@
 
 
 - Vấn đề: Ở đây dữ liệu thiếu khá nhiều, và sẽ có một số cột không ảnh hưởng đến output giá chung cư nên sẽ phải tiền xử lý, trực quan hoá các cột dữ liệu để tìm ra dữ liệu nào được giữ lại để xây dựng cho quá trình traning ***(tiền xử lý sẽ được trình bày bên dưới)***
-
+  - **Giai đoạn 2**: Nhóm thực hiện tiền xử lý dữ liệu, đưa các dữ liệu chữ về thành số ví dụ như thành phố, quận sẽ về số hóa hết để dễ dàng mô hình hóa bài toán
+  - **Giai đoạn 3**: Nhóm thực hiện mô hình bài toán, phát hiện ra các outliner để có cái nhìn cũng như dự đoán phù hợp để sử dụng các mô hình học máy phù hợp
+  - **Giai đoạn 4**: Nhóm thực hiện học máy cho bài toán sử dụng các mô hình như là **Linear Regression**, **RandomForest**, **GBM**, ...
 
 
 
