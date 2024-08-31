@@ -46,7 +46,8 @@
 
   - **Giai đoạn 1**: Ở giai đoạn này, nhóm hướng đến bài toán **dự đoán giá đất, chung cư và nhà ở** trên phạm vi **toàn quốc**. Sau đó, sử dụng các thư viện như là **Selenium, Beautiful Soup, CloudScraper** để thu thập dữ liệu từ trang [Chợ tốt](https://nha.chotot.com/) và [Bất động sản](https://batdongsan.com.vn/)
 
-    - Thông tin về dữ liệu thu thập được: ![Dữ liệu về chung cư](https://github.com/user-attachments/assets/afd5f2f3-71e0-4780-901a-f4967f569d7e)
+    - Thông tin về dữ liệu thu thập được:
+        *![Dữ liệu về chung cư](https://github.com/user-attachments/assets/afd5f2f3-71e0-4780-901a-f4967f569d7e)
 <br>
 
 ![Dữ liệu về nhà ở](https://github.com/user-attachments/assets/f850a58d-ec11-4adb-b038-5e9594ab3cba)
