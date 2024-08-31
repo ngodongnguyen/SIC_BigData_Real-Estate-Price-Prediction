@@ -231,5 +231,26 @@ Biểu đồ này cung cấp cái nhìn tổng quát về sự phân bố giá n
 - Mean Squared Error: 7108940113.255908
 - Root Mean Squared Error: 84314.53085474596
 - R-squared: 0.7984134137434515
+### **Kết Luận Cuối Bài**
+
+Sau khi thực hiện đồ án dự đoán giá nhà đất, nhóm chúng tôi đã rút ra một số kết luận quan trọng:
+
+1. **Thu thập và tiền xử lý dữ liệu:** 
+   - Việc thu thập dữ liệu từ các nguồn trực tuyến đòi hỏi sự kỹ lưỡng và chính xác. Dữ liệu cần được tiền xử lý cẩn thận để loại bỏ các giá trị thiếu và chuẩn hóa các biến dạng số, điều này ảnh hưởng trực tiếp đến chất lượng mô hình dự đoán.
+   
+2. **Phân tích dữ liệu:**
+   - Các yếu tố như diện tích, số phòng ngủ, số toilet, và vị trí địa lý (thành phố, quận/huyện) có tác động rõ rệt đến giá bất động sản. Trong đó, **diện tích** là biến quan trọng nhất, có mối tương quan mạnh mẽ với giá nhà.
+   - Hướng nhà và hướng ban công có ảnh hưởng đáng kể đến giá, đặc biệt là với hướng Đông Nam được nhiều người ưa chuộng, dẫn đến giá cao hơn.
+   - Trạng thái pháp lý của bất động sản cũng là một yếu tố quan trọng. Các bất động sản có đầy đủ giấy tờ pháp lý thường có giá trị cao hơn.
+
+3. **Mô hình dự đoán:**
+   - Mô hình học máy như **Linear Regression**, **Random Forest**, và **Gradient Boosting Machine (GBM)** đã được triển khai và thử nghiệm. Trong đó, **Gradient Boosting Machine (GBM)** cho kết quả dự đoán khá tốt nhờ khả năng xử lý dữ liệu phức tạp và tính không tuyến tính.
+   - Phát hiện và loại bỏ các giá trị ngoại lai (outliers) là cần thiết để cải thiện hiệu suất của mô hình, tránh những dự đoán bị lệch do dữ liệu không đại diện.
+
+4. **Thực tiễn ứng dụng:**
+   - Kết quả từ đồ án này có thể được áp dụng để xây dựng các hệ thống định giá tự động, hỗ trợ người mua và nhà đầu tư trong việc ra quyết định về bất động sản.
+   - Ngoài ra, trang web dự án cung cấp giao diện trực quan giúp người dùng dễ dàng tra cứu và so sánh giá bất động sản tại các khu vực khác nhau.
+
+### **Tóm lại**, đồ án đã giúp nhóm hiểu sâu hơn về quy trình thu thập, tiền xử lý dữ liệu, cũng như xây dựng và đánh giá các mô hình dự đoán giá bất động sản. Những kỹ năng và kiến thức thu được từ đồ án này là nền tảng vững chắc để chúng tôi tiếp tục phát triển các dự án phân tích dữ liệu và ứng dụng học máy trong tương lai.
 
 
