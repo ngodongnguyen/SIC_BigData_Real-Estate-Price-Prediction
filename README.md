@@ -69,24 +69,40 @@
 
 **3.1. Đồ án:**
   
-  - Dữ liệu sau khi thu thập được bao gồm 24949 dòng: ![Dữ liệu chung cư](./images/chotot_data2.png) &#8594; được lưu [rawdata.csv](./data/chotot/rawdata.csv) 
+  - Dữ liệu sau khi thu thập được bao gồm :
+    - 22827 dòng với dữ liệu của chung cư
+    - 24205 dòng với dữ liệu của nhà ở
+    - 16749 dòng với dữ liệu của đất
 
   - **Mô tả các biến**:
     - **DiaChi:** địa chỉ của chung cư, ở thành phố Hồ Chí Minh
-    - **TinhTrangBDS:** là chung cư này đã bàn giao chưa, hay vẫn còn đang trong quá trìnhg xây dựng. 
+    - **City:** Thuộc thành phố/tỉnh nào
+    - **District**: Thuộc quận/huyện nào
+    - **Ward**: Thuộc phường/xã nào
+    - **MucGia:** giá bán.
     - **DienTich:** diện tích thực ở(sử dụng) trên sổ hồng, đơn vị: **triệu/m2**.
-    - **PhongNgu:** số lượng phòng ngủ.
-    - **TenPhanKhu:** căn hộ đó thuộc block nào trong khu chung cư ấý. Vì 1 khu chung cư có rất nhiều block, các block ở vị trí khác nhau sẽ có giá khác nhau.
-    - **SoTang:** căn hộ nằm ở tầng thứ mấy.
-    - **PhongTam:** số lượng nhà vệ sinh.
-    - **Loại:** chung cư hay nhà ở xã hội.
-    - **GiayTo:** giấy tờ pháp lý của căn hộ, có đang tranh chấp hay không, có hợp pháp hay không.
-    - **MaCanHo:** mã căn hộ (giống như số nhà).
-    - **TinhTrangNoiThat:** căn hộ đã có nội thất hay chưa(sofa, lò vi sóng, máy lạnh,...).
-    - **HuongCuaChinh:** hướng cửa chính của căn hộ.
-    - **HuongBanCong:** hướng ban công của căn hộ.
-    - **DacDiem:** Đặc điểm căn hộ ( căn trong góc, hay căn chính giữa,...).
-    - **Gia:** giá bán của căn hộ.
+    - **PhapLy**: Hiện tại đã có sổ hay chưa
+  - **Các biến khác của chung cư**:
+    - **SoPhongNgu**: Số phòng ngủ của chung cư
+    - **SoToilet**: Số toilet của chung cư
+    - **NoiThat**: Tình trạng nội thất hiện tại
+    - **Lat**: Vĩ độ
+    - **Long**: Kinh độ
+    - **HuongNha** : Hướng nhà của chung cư
+    - **HuongBanCong**: Hướng ban công của chung cư
+  - **Các biến khác của nhà ở**:
+    - **SoPhongNgu**: Số phòng ngủ của nhà ở
+    - **SoToilet**: Số toilet của nhà ở
+    - **NoiThat**: Tình trạng nội thất hiện tại
+    - **DuongVao**: Đường vào nhà rộng bao nhiêu mét
+    - **SoTang**: Số tầng của nhà ở
+    - **HuongNha** : Hướng nhà của nhà ở
+  - **Các biến khác của đất**:
+    - **MatTien**: Mặt tiền rộng bao nhiêu mét
+    - **DuongVao**: Đường vào nhà rộng bao nhiêu mét
+    - **Lat**: Vĩ độ
+    - **Long**: Kinh độ
+    
     <br>
 
 
