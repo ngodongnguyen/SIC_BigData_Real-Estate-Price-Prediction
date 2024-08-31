@@ -23,9 +23,9 @@
   * Bùi Nhật Huy
   * Nguyễn Quang Huy
   * Nguyễn Thị Kim Ngân
- * Ngô Đông Nguyên
- * Nguyễn Yến Nhi
- * Lê Công Quận
+  * Ngô Đông Nguyên
+  * Nguyễn Yến Nhi
+  * Lê Công Quận
 * Phân công:
     | Thành viên | Công việc |
     | ----------- | ----------- |
