@@ -1,4 +1,4 @@
-<h1>BÁO CÁO ĐỒ ÁN CUỐI KÌ - KHOA HỌC DỮ LIỆU ỨNG DỤNG</h1>
+<h1>BÁO CÁO ĐỒ ÁN SIC - DỰ ĐOÁN GIÁ NHÀ ĐẤT</h1>
 <h2>Cấu trúc folder đồ án</h2>
 <h3>Gồm có 5 branches: Main, preprocessing, web_scraping, dev, deloy</h3>
 <h4>Main</h4>
@@ -36,6 +36,18 @@
     | Nguyễn Yến Nhi  | <ul><li>Thu thập dữ liệu </li><li>Biên soạn báo cáo dự án </li></ul> |
     | Lê Công Quận  | <ul><li>Thu thập dữ liệu </li><li>Trực quan hóa dữ liệu </li><li>Phát triển mô hình dự đoán </li></ul> |
 
+<h2>2. Tổng quan đồ án</h2>
+
+2.1. **Phát biểu đồ án**
+
+- **Đồ án:** Dự đoán giá đất, nhà ở, chung cu với phạm vi trên toàn quốc với tập dữ liệu từ trang [Chợ tốt](https://nha.chotot.com/) và [Bất động sản][(https://nha.chotot.com/)](https://batdongsan.com.vn/)
+
+2.2. **Quá trình thực hiện đồ án** : trải qua 4 giai đoạn khác nhau.
+
+  - **Giai đoạn 1**: Ở giai đoạn này, nhóm hướng đến bài toán **dự đoán giá đất, chung cư và nhà ở** trên phạm vi **toàn quốc**. Sau đó, sử dụng các thư viện như là **Selenium, Beautiful Soup, CloudScraper** để thu thập dữ liệu từ trang [Chợ tốt](https://nha.chotot.com/) và [Bất động sản][(https://nha.chotot.com/)](https://batdongsan.com.vn/)
+
+    - Thông tin về dữ liệu thu thập được: ![Dữ liệu về chung cư](./images/chotot_data1.png)<br>
+    - Vấn đề: Ở đây dữ liệu thiếu khá nhiều, và sẽ có một số cột không ảnh hưởng đến output giá chung cư nên sẽ phải tiền xử lý, trực quan hoá các cột dữ liệu để tìm ra dữ liệu nào được giữ lại để xây dựng cho quá trình traning ***(tiền xử lý sẽ được trình bày bên dưới)***
 
 
 
