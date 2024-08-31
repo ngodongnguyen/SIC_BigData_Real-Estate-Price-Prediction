@@ -104,5 +104,24 @@
     - **Long**: Kinh độ
     
     <br>
+- **Tiền xử lý dữ liệu:**
+    - Chỉ lấy các dòng dữ liệu có dữ liệu về: diện tích, phòng ngủ, phòng tắm và giá. Và đổi giá tiền từ VNĐ sang USD (theo tỉ giá 1$ ~ 25000)
+    - Cái nhìn tổng quan về data sau khi clean:![Dữ liệu về chung cư](https://github.com/user-attachments/assets/23d255a6-f4be-4cad-993e-b1f3debb4e4b)
+    <br>
+    
+- **Trực quan hoá dữ liệu:**
+  - Trực quan dữ liệu giá trị **dạng số** ![Chung cư](https://github.com/user-attachments/assets/d2448e83-6f06-4484-b468-02ba2bf43610)
+  - 1. **Diện Tích vs logPrice:**
+   - **Xu hướng:** Khi diện tích nhà tăng, giá (logPrice) cũng tăng, nhưng sự tăng này không đồng đều. Có một số nhà có diện tích nhỏ nhưng giá rất cao.
+
+2. **Số Phòng Ngủ vs logPrice:**
+   - **Xu hướng:** Số phòng ngủ không ảnh hưởng rõ ràng đến giá. Đa số nhà có từ 2 đến 4 phòng ngủ, nhưng giá có thể dao động rất nhiều ngay cả khi số phòng ngủ giống nhau.
+
+3. **Số Toilet vs logPrice:**
+   - **Xu hướng:** Tương tự như số phòng ngủ, số toilet cũng không ảnh hưởng rõ ràng đến giá. Các ngôi nhà có số lượng toilet khác nhau nhưng giá có thể dao động lớn.
+
+### Tổng kết:
+- **Diện Tích** có xu hướng tác động đến giá mạnh hơn so với số phòng ngủ và số toilet.
+- **Số Phòng Ngủ** và **Số Toilet** có ít tác động rõ ràng đến giá
 
 
