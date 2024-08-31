@@ -15,14 +15,14 @@
   - Chứa các mouules **code** về lấy dữ liệu các trang web sử dụng Selenium, Beautiful Soup, CloudScraper
 <h4>Deploy</h4>
   
-  - chứa trang **website** của dự án
+  - Chứa trang **website** của dự án
 <h2>1. Thành viên nhóm</h2>
 
 * Team size: 6
-* Thành viên 
- * Bùi Nhật Huy
- * Nguyễn Quang Huy
- * Nguyễn Thị Kim Ngân
+* Thành viên :
+  * Bùi Nhật Huy
+  * Nguyễn Quang Huy
+  * Nguyễn Thị Kim Ngân
  * Ngô Đông Nguyên
  * Nguyễn Yến Nhi
  * Lê Công Quận
