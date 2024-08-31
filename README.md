@@ -40,7 +40,7 @@
 
 2.1. **Phát biểu đồ án**
 
-- **Đồ án:** Dự đoán giá đất, nhà ở, chung cu với phạm vi trên toàn quốc với tập dữ liệu từ trang [Chợ tốt](https://nha.chotot.com/) và [Bất động sản][(https://nha.chotot.com/)](https://batdongsan.com.vn/)
+- **Đồ án:** Dự đoán giá đất, nhà ở, chung cu với phạm vi trên toàn quốc với tập dữ liệu từ trang [Chợ tốt](https://nha.chotot.com/) và [Bất động sản](https://batdongsan.com.vn/)
 
 2.2. **Quá trình thực hiện đồ án** : trải qua 4 giai đoạn khác nhau.
 
