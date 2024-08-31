@@ -222,14 +222,14 @@ Biểu đồ này cung cấp cái nhìn tổng quát về sự phân bố giá n
 # Chạy thuật toán dự đoán giá
 ## Random Forest
 ![Chung cư](https://github.com/user-attachments/assets/f5160cbc-8d03-4171-9d3c-404bdac3630a)
-Out-of-Bag Score: 0.5576258770124625
-Mean Squared Error: 8958526101.841373
-Root Mean Squared Error: 94649.49076377206
-R-squared: 0.7459651275732477
+- Out-of-Bag Score: 0.5576258770124625
+- Mean Squared Error: 8958526101.841373
+- Root Mean Squared Error: 94649.49076377206
+- R-squared: 0.7459651275732477
 ## Gradient Boosting Machines
 ![Chung cư](https://github.com/user-attachments/assets/45b69bb7-ce05-4c8f-9047-54b76a8c4b74)
-Mean Squared Error: 7108940113.255908
-Root Mean Squared Error: 84314.53085474596
-R-squared: 0.7984134137434515
+- Mean Squared Error: 7108940113.255908
+- Root Mean Squared Error: 84314.53085474596
+- R-squared: 0.7984134137434515
 
 
