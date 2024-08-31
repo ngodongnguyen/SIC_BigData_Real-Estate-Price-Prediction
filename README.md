@@ -62,9 +62,31 @@
 
 
 - Vấn đề: Ở đây dữ liệu thiếu khá nhiều, và sẽ có một số cột không ảnh hưởng đến output giá chung cư nên sẽ phải tiền xử lý, trực quan hoá các cột dữ liệu để tìm ra dữ liệu nào được giữ lại để xây dựng cho quá trình traning ***(tiền xử lý sẽ được trình bày bên dưới)***
-  - **Giai đoạn 2**: Nhóm thực hiện tiền xử lý dữ liệu, đưa các dữ liệu chữ về thành số ví dụ như thành phố, quận sẽ về số hóa hết để dễ dàng mô hình hóa bài toán
-  - **Giai đoạn 3**: Nhóm thực hiện mô hình bài toán, phát hiện ra các outliner để có cái nhìn cũng như dự đoán phù hợp để sử dụng các mô hình học máy phù hợp
-  - **Giai đoạn 4**: Nhóm thực hiện học máy cho bài toán sử dụng các mô hình như là **Linear Regression**, **RandomForest**, **GBM**, ...
+- **Giai đoạn 2**: Nhóm thực hiện tiền xử lý dữ liệu, đưa các dữ liệu chữ về thành số ví dụ như thành phố, quận sẽ về số hóa hết để dễ dàng mô hình hóa bài toán
+- **Giai đoạn 3**: Nhóm thực hiện mô hình bài toán, phát hiện ra các outliner để có cái nhìn cũng như dự đoán phù hợp để sử dụng các mô hình học máy phù hợp
+- **Giai đoạn 4**: Nhóm thực hiện học máy cho bài toán sử dụng các mô hình như là **Linear Regression**, **RandomForest**, **GBM**, ...
+<h2>3. Phân tích chi tiết</h2>
 
+**3.1. Đồ án:**
+  
+  - Dữ liệu sau khi thu thập được bao gồm 24949 dòng: ![Dữ liệu chung cư](./images/chotot_data2.png) &#8594; được lưu [rawdata.csv](./data/chotot/rawdata.csv) 
+
+  - **Mô tả các biến**:
+    - **DiaChi:** địa chỉ của chung cư, ở thành phố Hồ Chí Minh
+    - **TinhTrangBDS:** là chung cư này đã bàn giao chưa, hay vẫn còn đang trong quá trìnhg xây dựng. 
+    - **DienTich:** diện tích thực ở(sử dụng) trên sổ hồng, đơn vị: **triệu/m2**.
+    - **PhongNgu:** số lượng phòng ngủ.
+    - **TenPhanKhu:** căn hộ đó thuộc block nào trong khu chung cư ấý. Vì 1 khu chung cư có rất nhiều block, các block ở vị trí khác nhau sẽ có giá khác nhau.
+    - **SoTang:** căn hộ nằm ở tầng thứ mấy.
+    - **PhongTam:** số lượng nhà vệ sinh.
+    - **Loại:** chung cư hay nhà ở xã hội.
+    - **GiayTo:** giấy tờ pháp lý của căn hộ, có đang tranh chấp hay không, có hợp pháp hay không.
+    - **MaCanHo:** mã căn hộ (giống như số nhà).
+    - **TinhTrangNoiThat:** căn hộ đã có nội thất hay chưa(sofa, lò vi sóng, máy lạnh,...).
+    - **HuongCuaChinh:** hướng cửa chính của căn hộ.
+    - **HuongBanCong:** hướng ban công của căn hộ.
+    - **DacDiem:** Đặc điểm căn hộ ( căn trong góc, hay căn chính giữa,...).
+    - **Gia:** giá bán của căn hộ.
+    <br>
 
 
