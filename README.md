@@ -46,8 +46,16 @@
 
   - **Giai đoạn 1**: Ở giai đoạn này, nhóm hướng đến bài toán **dự đoán giá đất, chung cư và nhà ở** trên phạm vi **toàn quốc**. Sau đó, sử dụng các thư viện như là **Selenium, Beautiful Soup, CloudScraper** để thu thập dữ liệu từ trang [Chợ tốt](https://nha.chotot.com/) và [Bất động sản](https://batdongsan.com.vn/)
 
-    - Thông tin về dữ liệu thu thập được: ![Dữ liệu về chung cư]![image](https://github.com/user-attachments/assets/afd5f2f3-71e0-4780-901a-f4967f569d7e)
+    - Thông tin về dữ liệu thu thập được: ![Dữ liệu về chung cư](https://github.com/user-attachments/assets/afd5f2f3-71e0-4780-901a-f4967f569d7e)
 <br>
+
+![Dữ liệu về nhà ở](https://github.com/user-attachments/assets/f850a58d-ec11-4adb-b038-5e9594ab3cba)
+<br>
+
+![Dữ liệu về đất](https://github.com/user-attachments/assets/6f613e30-02dd-42ba-b476-16e149ba02f7)
+<br>
+
+
     - Vấn đề: Ở đây dữ liệu thiếu khá nhiều, và sẽ có một số cột không ảnh hưởng đến output giá chung cư nên sẽ phải tiền xử lý, trực quan hoá các cột dữ liệu để tìm ra dữ liệu nào được giữ lại để xây dựng cho quá trình traning ***(tiền xử lý sẽ được trình bày bên dưới)***
 
 
