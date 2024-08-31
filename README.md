@@ -16,3 +16,26 @@
 <h4>Deploy</h4>
   
   - chứa trang **website** của dự án
+<h2>1. Thành viên nhóm</h2>
+* Team size: 6
+* Thành viên 
+ * Bùi Nhật Huy
+ * Nguyễn Quang Huy
+ * Nguyễn Thị Kim Ngân
+ * Ngô Đông Nguyên
+ * Nguyễn Yến Nhi
+ * Lê Công Quận
+* Phân công:
+    | Thành viên | Công việc |
+    | ----------- | ----------- |
+    | Bùi Nhật Huy | <ul> <li>Quản lý dự án, đảm bảo tiến độ</li><li>Thu thập dữ liệu </li><li>Phát triển mô hình dự đoán</li><li>Trực quan hóa dữ liệu</li></ul>  |
+    | Nguyễn Quang Huy  | <ul><li>Thu thập dữ liệu </li><li>Phát triển web</li></ul> |
+    | Nguyễn Thị Kim Ngân  | <ul><li>Biên soạn báo cáo dự án </li></ul> |
+    | Ngô Đông Nguyên  | <ul><li>Thu thập dữ liệu </li><li>Trực quan hóa dữ liệu </li><li>Phát triển mô hình dự đoán </li></ul> |
+    | Nguyễn Yến Nhi  | <ul><li>Thu thập dữ liệu </li><li>Biên soạn báo cáo dự án </li></ul> |
+    | Lê Công Quận  | <ul><li>Thu thập dữ liệu </li><li>Trực quan hóa dữ liệu </li><li>Phát triển mô hình dự đoán </li></ul> |
+
+
+
+
+
